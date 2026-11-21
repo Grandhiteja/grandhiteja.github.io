@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grandhi Teja — AI/ML &amp; Backend Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Geist+Mono:wght@400&display=swap"
+    />
+    <link rel="stylesheet" href="hark.css" />
+    <link rel="stylesheet" href="hark-hero.css" />
+    <link rel="stylesheet" href="hark-charts.css" />
+    <script>document.documentElement.classList.add("x-js");</script>
+    <style>
+      /* Sunset night theme: fixed dark, token values only. */
+      :root:root {
+        color-scheme: dark;
+        --x-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+        --x-night: #1b1640;
+        --x-night-2: #2a1f5c;
+        --x-deep: #120d33;
+        --x-orange: #ff9a3c;
+        --x-peach: #ffb38a;
+        --x-pink: #ff6f91;
+        --x-lav: #a99cff;
+        --x-violet: #3b2a7a;
+        --x-grad: linear-gradient(90deg, var(--x-orange), var(--x-pink));
+        --x-grad-3: linear-gradient(120deg, var(--x-orange), var(--x-pink) 50%, var(--x-lav));
+        --x-glass: rgba(52, 40, 112, 0.55);
+        --x-glass-border: rgba(255, 255, 255, 0.13);
+        --x-accent: var(--x-peach);
+        --text-primary: #f4f1ff;
+        --text-secondary: #c6bfe8;
+        --text-tertiary: #ffffff59;
+        --text-primary-on: #1b1640;
+        --text-secondary-on: #3a2f70;
+        --fill-primary: #ff9a3c;
+        --fill-primary-on: #1b1640;
+        --fill-tertiary: rgba(52, 40, 112, 0.55);
+        --stroke-primary: #ffffff2e;
+        --stroke-secondary: #ffffff17;
+        --stroke-primary-on: #ffffff17;
+        --hover-wash: #ffffff0f;
+        --fill-system-green: #ffb38a;
+        --fill-system-orange: #ff9a3c;
+        --stroke-system-orange: #ff9a3c33;
+        --hark-shadow: 0 16px 40px #0b07246b;
+        --type-title: var(--weight-medium) var(--size-title)/1.15 var(--x-serif);
+        --type-display: var(--weight-medium) var(--size-display)/1.05 var(--x-serif);
+        --chart-ink: #ff9a3c;
+        --chart-ink-2: #c6bfe8;
+        --chart-ink-3: #ffffff40;
+        --chart-grid: #ffffff14;
+        --chart-reference: #ffffff2e;
+        --chart-muted: #ffffff33;
+        --chart-1: #ff9a3c;
+        --chart-2: #ff6f91;
+        --chart-3: #a99cff;
+      }
+      body {
+        background:
+          radial-gradient(ellipse 80% 40% at 85% 10%, #3a2a7a99, transparent 70%),
+          radial-gradient(ellipse 70% 40% at 10% 70%, #ff6f911a, transparent 70%),
+          linear-gradient(180deg, var(--x-night) 0%, var(--x-night-2) 50%, var(--x-night) 100%);
+        background-color: var(--x-night);
+      }
+      .x-nav, .x-hero__copy { background-color: transparent; }
+      /* twinkling stars behind the dark sections */
+      body::before, body::after {
+        content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+        background-repeat: no-repeat;
+        animation: x-twinkle 4.5s ease-in-out infinite alternate;
+      }
+      body::before {
+        background-image:
+          radial-gradient(1.5px 1.5px at 8% 14%, #fff, transparent), radial-gradient(1px 1px at 22% 62%, #fff, transparent),
+          radial-gradient(1.5px 1.5px at 37% 28%, #ffd9c4, transparent), radial-gradient(1px 1px at 51% 83%, #fff, transparent),
+          radial-gradient(1.5px 1.5px at 66% 9%, #fff, transparent), radial-gradient(1px 1px at 79% 47%, #e3ddff, transparent),
+          radial-gradient(1.5px 1.5px at 93% 72%, #fff, transparent), radial-gradient(1px 1px at 3% 91%, #fff, transparent);
+      }
+      body::after {
+        animation-duration: 6.5s; animation-delay: -3s;
+        background-image:
+          radial-gradient(1px 1px at 15% 38%, #fff, transparent), radial-gradient(1.5px 1.5px at 29% 8%, #e3ddff, transparent),
+          radial-gradient(1px 1px at 44% 55%, #fff, transparent), radial-gradient(1.5px 1.5px at 58% 36%, #fff, transparent),
+          radial-gradient(1px 1px at 72% 88%, #ffd9c4, transparent), radial-gradient(1.5px 1.5px at 86% 22%, #fff, transparent),
+          radial-gradient(1px 1px at 97% 50%, #fff, transparent), radial-gradient(1px 1px at 33% 96%, #fff, transparent);
+      }
+      @keyframes x-twinkle { from { opacity: 0.25; } to { opacity: 0.9; } }
+
+      .x-accent { color: var(--x-accent); }
+      .section { scroll-margin-top: 88px; }
+      .head__eyebrow { color: var(--x-lav); }
+      .head h2 {
+        font-family: var(--x-serif); font-weight: var(--weight-medium);
+        background: var(--x-grad); -webkit-background-clip: text; background-clip: text;
+        color: var(--x-peach); -webkit-text-fill-color: transparent;
+        width: fit-content; max-width: 100%;
+      }
+      .cards h3 { font-family: var(--x-serif); font-weight: var(--weight-medium); }
+
+      /* scroll progress */
+      .x-progress {
+        position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60;
+        background: var(--x-grad); transform-origin: 0 50%; transform: scaleX(var(--p, 0));
+        pointer-events: none;
+      }
+
+      /* nav: transparent over the hero, frosted indigo after scrolling */
+      .x-nav {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+        display: flex; align-items: center; gap: 16px;
+        padding: 14px max(var(--gutter), calc((100vw - var(--page-max)) / 2 + var(--gutter)));
+        border-bottom: 1px solid transparent;
+        transition: background-color 0.35s ease, padding 0.35s ease, border-color 0.35s ease;
+      }
+      .x-nav.is-scrolled {
+        background-color: rgba(27, 22, 64, 0.78);
+        -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%);
+        border-bottom-color: var(--stroke-secondary);
+        padding-block: 6px;
+      }
+      .x-nav__brand { display: inline-flex; align-items: center; min-height: var(--tap); font: var(--weight-medium) 20px/1 var(--x-serif); color: #fff; text-decoration: none; white-space: nowrap; }
+      .x-nav__links { display: flex; gap: 2px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+      .x-nav__links::-webkit-scrollbar { display: none; }
+      .x-nav__links a, .x-nav__gh {
+        display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 14px;
+        font: var(--type-label); color: rgba(255, 255, 255, 0.9); text-decoration: none; white-space: nowrap;
+        border-radius: var(--r-s); transition: color var(--dur-quick) ease;
+      }
+      .x-nav__links a:hover, .x-nav__gh:hover { color: var(--x-peach); }
+      .x-nav__gh { min-width: var(--tap); justify-content: center; padding: 0 8px; }
+      .x-nav__gh svg { width: 20px; height: 20px; fill: currentColor; }
+      .x-nav__cta {
+        display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 22px;
+        border: 1.5px solid rgba(255, 255, 255, 0.9); border-radius: 4px;
+        font: var(--type-label); color: #fff; text-decoration: none; white-space: nowrap;
+        transition: background-color var(--dur-quick) ease, color var(--dur-quick) ease;
+      }
+      .x-nav__cta:hover { background: #fff; color: var(--x-night); }
+      @media (max-width: 719px) {
+        .x-nav { flex-wrap: wrap; gap: 0 4px; padding-block: 8px 2px; }
+        .x-nav.is-scrolled { padding-block: 4px 0; }
+        .x-nav__brand { flex: 1; }
+        .x-nav__cta { padding: 0 16px; }
+        .x-nav__links { order: 3; width: calc(100% + 28px); margin: 0 -14px; }
+      }
+
+      /* hero */
+      .x-hero {
+        position: relative; isolation: isolate; overflow: hidden;
+        width: 100vw; margin-inline: calc(50% - 50vw); margin-top: -12px;
+        min-height: 100vh; min-height: 100svh;
+        display: flex; align-items: center;
+        background: var(--x-night);
+      }
+      .x-hero__bg {
+        position: absolute; inset: -7%; z-index: -4;
+        transform: translate3d(calc(var(--mx, 0) * -16px), calc(var(--sy, 0) * 1px + var(--my, 0) * -10px), 0);
+        will-change: transform;
+      }
+      .x-hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
+      @media (max-width: 699px) { .x-hero__bg img { object-position: 90% 40%; } }
+      .x-hero__shade {
+        position: absolute; inset: 0; z-index: -1; pointer-events: none;
+        background:
+          linear-gradient(90deg, rgba(18, 12, 46, 0.9) 0%, rgba(18, 12, 46, 0.66) 34%, rgba(18, 12, 46, 0.12) 64%, transparent 100%),
+          linear-gradient(180deg, rgba(18, 12, 46, 0.45) 0%, transparent 22%, transparent 70%, var(--x-night) 100%);
+      }
+      .x-sky { position: absolute; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
+      .x-cloud {
+        position: absolute; width: var(--w, 40vw); height: calc(var(--w, 40vw) * 0.28); border-radius: 50%;
+        background: radial-gradient(closest-side, rgba(255, 214, 235, 0.26), rgba(255, 179, 138, 0.08) 60%, transparent);
+        filter: blur(18px);
+        animation: x-drift var(--t, 40s) ease-in-out infinite alternate;
+      }
+      @keyframes x-drift { from { transform: translateX(-6vw); } to { transform: translateX(8vw); } }
+      .x-bird {
+        position: absolute; left: 0; top: var(--y); width: calc(26px * var(--s, 1)); opacity: 0.9;
+        animation: x-fly var(--t, 40s) linear infinite; animation-delay: var(--d, 0s);
+      }
+      .x-bird svg { display: block; width: 100%; overflow: visible; animation: x-flap 0.9s ease-in-out infinite alternate; transform-origin: 50% 70%; }
+      .x-bird path { fill: none; stroke: #fff; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+      @keyframes x-fly {
+        0% { transform: translate(-10vw, 0); }
+        50% { transform: translate(50vw, -22px); }
+        100% { transform: translate(110vw, 8px); }
+      }
+      @keyframes x-flap { to { transform: scaleY(0.45); } }
+
+      .x-hero__copy {
+        position: relative; width: 100%; max-width: var(--page-max); margin-inline: auto;
+        padding: 128px var(--gutter) 88px;
+      }
+      .x-hero__kicker {
+        display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+        font: var(--weight-regular) clamp(14px, 1.3vw, 17px)/1.4 var(--sans); color: #d9d2ff;
+        animation: x-fade 0.8s var(--ease-out) 0.1s both;
+      }
+      .x-hero__kicker span[aria-hidden] { letter-spacing: -0.12em; font-size: 1.2em; color: var(--x-lav); }
+      .x-hero__title {
+        margin: 18px 0 22px;
+        font: var(--weight-medium) clamp(56px, 10.5vw, 172px)/0.95 var(--x-serif);
+        letter-spacing: -0.01em; color: #fff;
+        text-shadow: 0 6px 40px rgba(10, 6, 30, 0.45);
+      }
+      .x-w { display: inline-block; white-space: nowrap; }
+      .x-l { display: inline-block; animation: x-rise 0.9s var(--ease-out) both; animation-delay: calc(var(--i) * 65ms + 250ms); }
+      @keyframes x-rise { from { opacity: 0; transform: translateY(0.45em); } to { opacity: 1; transform: none; } }
+      @keyframes x-fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+      .x-hero__sub {
+        max-width: 46ch; font: var(--weight-regular) clamp(15px, 1.35vw, 18px)/1.65 var(--sans);
+        color: rgba(255, 255, 255, 0.9);
+        animation: x-fade 0.8s var(--ease-out) 1s both;
+      }
+      .x-hero .x-ctas { animation: x-fade 0.8s var(--ease-out) 1.25s both; }
+      .x-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; animation: x-fade 0.8s var(--ease-out) 1.45s both; }
+      .x-chip {
+        display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px 10px 14px;
+        border-radius: var(--r-pill); color: #fff;
+        background: rgba(27, 22, 64, 0.45); border: 1px solid rgba(255, 255, 255, 0.22);
+        -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      }
+      .x-chip b { font: var(--weight-medium) 24px/1 var(--x-serif); }
+      .x-chip span { font: var(--type-caption); text-transform: uppercase; letter-spacing: 0.06em; color: #e8e3ff; line-height: 1.3; }
+      @media (max-width: 699px) {
+        .x-hero__shade {
+          background: linear-gradient(180deg, rgba(18, 12, 46, 0.62) 0%, rgba(18, 12, 46, 0.72) 55%, var(--x-night) 100%);
+        }
+        .x-hero__copy { padding-top: 140px; padding-bottom: 64px; }
+        .x-hero__title { font-size: clamp(48px, 15vw, 84px); }
+      }
+
+      /* buttons with shimmer */
+      .x-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+      .x-cta {
+        position: relative; overflow: hidden; isolation: isolate;
+        display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 26px;
+        border-radius: 4px; font: var(--weight-medium) 15px/1 var(--sans); text-decoration: none;
+        border: 1.5px solid rgba(255, 255, 255, 0.9); color: #fff;
+        --x-shine: rgba(255, 255, 255, 0.45);
+        transition: background-color var(--dur-quick) ease, transform var(--dur-quick) ease, box-shadow 0.3s ease;
+      }
+      .x-cta::after {
+        content: ""; position: absolute; top: 0; bottom: 0; left: -70%; width: 45%; z-index: -1;
+        background: linear-gradient(100deg, transparent, var(--x-shine), transparent);
+        transform: skewX(-20deg);
+      }
+      .x-cta:hover { background-color: rgba(255, 255, 255, 0.1); transform: translateY(-1px); }
+      .x-cta:hover::after { left: 130%; transition: left 0.75s ease; }
+      .x-cta--solid { background: #fff; color: var(--x-night); border-color: #fff; --x-shine: rgba(255, 154, 60, 0.4); }
+      .x-cta--solid:hover { background: #fff; box-shadow: 0 10px 30px rgba(255, 154, 60, 0.35); }
+      .x-cta--sunset, .x-cta--sunset:hover {
+        background: linear-gradient(90deg, #ff9a3c, #ff6f91); background-color: #ff9a3c;
+        -webkit-background-clip: border-box; background-clip: border-box;
+        color: #1b1640; -webkit-text-fill-color: #1b1640; border-color: transparent;
+      }
+      .x-cta--sunset:hover { box-shadow: 0 10px 30px rgba(255, 111, 145, 0.4); }
+
+      /* glass surfaces */
+      .main .cards > div, .main .chart, .x-cm {
+        background: var(--x-glass);
+        border: 1px solid var(--x-glass-border);
+        -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      }
+
+      /* tags */
+      .x-tag {
+        display: inline-block; padding: 4px 11px; border-radius: var(--r-pill);
+        font: var(--type-tag); color: var(--x-peach);
+        background-color: var(--x-deep); box-shadow: inset 0 0 0 1px rgba(255, 179, 138, 0.2);
+      }
+      .x-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+      .cards .x-tags li { padding: 0; border: 0; }
+
+      /* scroll reveal */
+      .x-js .x-reveal {
+        opacity: 0; transform: translateY(28px);
+        transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+        transition-delay: var(--d, 0ms);
+      }
+      .x-js .x-reveal.is-in { opacity: 1; transform: none; }
+
+      /* about */
+      .x-about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+      .x-about .cards { grid-template-columns: 1fr; }
+      .x-about .cards > div { box-shadow: var(--hark-shadow); }
+      .x-about .head { grid-template-columns: 1fr; }
+      .x-lead { font: italic var(--weight-regular) clamp(18px, 1.8vw, 22px)/1.5 var(--x-serif); color: var(--x-peach); }
+      .x-facts { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 20px; font-size: var(--size-small); }
+      .x-facts dt { font: var(--type-tag); color: var(--x-lav); padding-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+      .x-facts dd { margin: 0; }
+      @media (max-width: 899px) { .x-about { grid-template-columns: 1fr; gap: 24px; } .x-about > .cards { order: 2; } }
+
+      /* projects: tilt and glowing gradient border */
+      .x-proj {
+        position: relative; display: flex; flex-direction: column; gap: 14px; box-shadow: var(--hark-shadow);
+        --rx: 0deg; --ry: 0deg;
+      }
+      .x-js .x-proj.x-reveal.is-in, .x-proj {
+        transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+      }
+      .x-proj.is-in { transition: transform 0.5s var(--ease-out), box-shadow 0.35s ease, opacity 0.8s var(--ease-out); transition-delay: var(--d, 0ms); }
+      .x-proj::before {
+        content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1.5px; pointer-events: none;
+        background: var(--x-grad-3);
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor; mask-composite: exclude;
+        opacity: 0; transition: opacity 0.35s ease;
+      }
+      .x-proj:hover::before { opacity: 1; }
+      .x-proj:hover { box-shadow: 0 22px 54px rgba(255, 111, 145, 0.2), 0 0 0 1px transparent; }
+      .cards .x-proj h3 { margin: 0; }
+      .x-proj__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+      .cards .x-proj > ul:not(.x-tags) { color: var(--text-secondary); font-size: var(--size-small); line-height: 1.5; }
+      .x-proj__gh { margin-top: auto; font: var(--type-label); color: var(--x-peach); text-decoration: none; display: inline-flex; align-items: center; min-height: var(--tap); }
+      .x-proj__gh:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+      /* confusion matrix */
+      .x-cm { padding: 20px; border-radius: var(--r-m); }
+      .x-cm__cap { font: var(--weight-medium) 18px/1.3 var(--x-serif); margin-bottom: 14px; }
+      .x-cm__cap small { display: block; margin-top: 4px; font: var(--type-caption); color: var(--text-secondary); }
+      .x-cm .stat__fig { background: var(--x-grad); -webkit-background-clip: text; background-clip: text; color: var(--x-peach); -webkit-text-fill-color: transparent; width: fit-content; }
+      .x-cm__grid { display: grid; grid-template-columns: auto repeat(2, minmax(0, 1fr)); gap: 8px; max-width: 560px; }
+      .x-cm__h { font: var(--type-tag); color: var(--text-secondary); align-self: center; }
+      .x-cm__h--col { text-align: center; }
+      .x-cm__cell {
+        display: grid; place-items: center; gap: 2px; min-height: 88px; padding: 12px; border-radius: var(--r-s);
+        font: var(--weight-medium) clamp(20px, 3vw, 28px)/1.1 var(--x-serif); text-align: center;
+      }
+      .x-cm__cell small { font: var(--type-tag); }
+      .x-cm__cell--ok { background: linear-gradient(135deg, var(--x-orange), var(--x-peach)); color: #1b1640; -webkit-text-fill-color: #1b1640; box-shadow: 0 8px 24px rgba(255, 154, 60, 0.25); }
+      .x-cm__cell--ok, .x-cm__cell--ok * { color: #1b1640; -webkit-text-fill-color: #1b1640; -webkit-background-clip: border-box; background-clip: border-box; }
+      .x-cm__cell--ok { background: #ff9a3c; }
+      .x-cm__cell--ok small { background: none; }
+      .x-cm__cell--err { background: var(--x-violet); color: #fff; box-shadow: inset 0 0 0 1px rgba(169, 156, 255, 0.3); }
+      .x-js .x-cm__cell { opacity: 0; transform: scale(0.6); }
+      .x-js .x-cm.is-in .x-cm__cell { animation: x-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+      .x-js .x-cm.is-in [role="row"]:nth-child(2) .x-cm__cell:nth-of-type(3) { animation-delay: 0.12s; }
+      .x-js .x-cm.is-in [role="row"]:nth-child(3) .x-cm__cell:nth-of-type(2) { animation-delay: 0.24s; }
+      .x-js .x-cm.is-in [role="row"]:nth-child(3) .x-cm__cell:nth-of-type(3) { animation-delay: 0.36s; }
+      @keyframes x-pop { to { opacity: 1; transform: none; } }
+
+      @media (prefers-reduced-motion: reduce) {
+        body::before, body::after, .x-cloud, .x-bird, .x-bird svg { animation: none; }
+        .x-l, .x-hero__kicker, .x-hero__sub, .x-hero .x-ctas, .x-chips { animation: none; }
+        .x-js .x-reveal { opacity: 1; transform: none; transition: none; }
+        .x-js .x-cm__cell { opacity: 1; transform: none; animation: none !important; }
+        .x-proj, .x-js .x-proj.x-reveal.is-in { transform: none; }
+        .x-cta::after { display: none; }
+        .x-hero__bg { transform: none; }
+        .x-nav, .x-cta { transition: none; }
+      }
+
+      .x-stack { display: grid; gap: 16px; }
+      .x-pair2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+      @media (max-width: 899px) { .x-pair2 { grid-template-columns: 1fr; } }
+
+      .x-certs .cards > div { padding: 18px 20px; }
+      .x-certs h3 { font: var(--type-label); margin-bottom: 4px; }
+      .x-mono-small { font: var(--type-tag); color: var(--text-secondary); }
+    </style>
+  </head>
+  <body>
+    <div class="page" id="top">
+      <div class="x-progress" aria-hidden="true"></div>
+      <header class="x-nav">
+        <a class="x-nav__brand" href="#top">Grandhi Teja</a>
+        <nav class="x-nav__links" aria-label="Sections">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#stats">Stats</a>
+          <a href="#experience">Experience</a>
+        </nav>
+        <a class="x-nav__gh" href="https://github.com/Grandhiteja" target="_blank" rel="noopener" aria-label="GitHub profile">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+        <a class="x-nav__cta" href="#contact">Contact</a>
+      </header>
+
+      <main class="main">
+        <section class="x-hero" aria-label="Introduction">
+          <div class="x-hero__bg"><img src="hero_traveller.jpg" alt="Illustrated sunset over a mountain valley, a young traveller with a backpack, red scarf and laptop looking toward the peaks" /></div>
+          <div class="x-sky" aria-hidden="true">
+            <span class="x-cloud" style="--w: 42vw; --t: 46s; top: 8%; left: 34%"></span>
+            <span class="x-cloud" style="--w: 30vw; --t: 38s; top: 16%; left: 58%; animation-delay: -12s"></span>
+            <span class="x-cloud" style="--w: 36vw; --t: 52s; top: 2%; left: 8%; animation-delay: -20s"></span>
+            <span class="x-bird" style="--y: 12%; --t: 42s; --d: -6s; --s: 1"><svg viewBox="0 0 24 10"><path d="M1 7 Q6 1 12 7 Q18 1 23 7" /></svg></span>
+            <span class="x-bird" style="--y: 16%; --t: 42s; --d: -7.2s; --s: 0.7"><svg viewBox="0 0 24 10"><path d="M1 7 Q6 1 12 7 Q18 1 23 7" /></svg></span>
+            <span class="x-bird" style="--y: 9%; --t: 42s; --d: -8.1s; --s: 0.8"><svg viewBox="0 0 24 10"><path d="M1 7 Q6 1 12 7 Q18 1 23 7" /></svg></span>
+            <span class="x-bird" style="--y: 20%; --t: 58s; --d: -30s; --s: 0.9"><svg viewBox="0 0 24 10"><path d="M1 7 Q6 1 12 7 Q18 1 23 7" /></svg></span>
+            <span class="x-bird" style="--y: 23%; --t: 58s; --d: -31.5s; --s: 0.6"><svg viewBox="0 0 24 10"><path d="M1 7 Q6 1 12 7 Q18 1 23 7" /></svg></span>
+          </div>
+          <div class="x-hero__shade" aria-hidden="true"></div>
+          <div class="x-hero__copy">
+            <p class="x-hero__kicker"><span aria-hidden="true">▮▮</span> AI/ML &amp; Backend Developer · Building models that ship</p>
+            <h1 class="x-hero__title" aria-label="Grandhi Teja">
+              <span class="x-w" aria-hidden="true"><span class="x-l" style="--i: 0">G</span><span class="x-l" style="--i: 1">R</span><span class="x-l" style="--i: 2">A</span><span class="x-l" style="--i: 3">N</span><span class="x-l" style="--i: 4">D</span><span class="x-l" style="--i: 5">H</span><span class="x-l" style="--i: 6">I</span></span>
+              <span class="x-w" aria-hidden="true"><span class="x-l" style="--i: 7">T</span><span class="x-l" style="--i: 8">E</span><span class="x-l" style="--i: 9">J</span><span class="x-l" style="--i: 10">A</span></span>
+            </h1>
+            <p class="x-hero__sub">Talk is cheap. Show me the code. I build NLP models, LLM agents and Python/Java backends.</p>
+            <div class="x-ctas">
+              <a class="x-cta x-cta--solid" href="#projects">View my work <span aria-hidden="true">▸</span></a>
+              <a class="x-cta" href="mailto:grandhiteja93@gmail.com">Let's talk</a>
+            </div>
+            <div class="x-chips">
+              <div class="x-chip"><b data-count="8.93" data-dec="2">8.93</b><span>CGPA<br />out of 10</span></div>
+              <div class="x-chip"><b data-count="144">144</b><span>GitHub<br />commits</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="about" data-nav="About">
+          <div class="x-about">
+            <div class="cards">
+              <div>
+                <h3><span class="x-accent">Machine Learning</span></h3>
+                <p class="x-mono-small">PyTorch, Transformers, LoRA</p>
+              </div>
+              <div>
+                <h3><span class="x-accent">Backend</span></h3>
+                <p class="x-mono-small">Python, FastAPI, Node/Express, Java</p>
+              </div>
+              <div>
+                <h3><span class="x-accent">Data</span></h3>
+                <p class="x-mono-small">SQL, Pandas, dashboards</p>
+              </div>
+            </div>
+            <div class="x-stack">
+              <div class="head">
+                <p class="head__eyebrow">// introduce</p>
+                <h2>Hello! I'm Grandhi Teja</h2>
+              </div>
+              <p class="x-lead">I like turning research ideas into things people can use.</p>
+              <div class="prose">
+                <p>A transformer that flags fake news in about a second on a CPU, an LLM agent that decides how to recover a failed payment, and clean REST backends behind them.</p>
+              </div>
+              <dl class="x-facts">
+                <dt>Degree</dt><dd>B.Tech Computer Science &amp; Engineering (AI/ML)</dd>
+                <dt>School</dt><dd>SRM Institute of Science and Technology, Tiruchirappalli</dd>
+                <dt>Years</dt><dd>2023–2027</dd>
+                <dt>CGPA</dt><dd>8.93 / 10</dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="projects" data-nav="Projects">
+          <div class="head">
+            <p class="head__eyebrow">// latest works</p>
+            <h2>Models and backends that actually run.</h2>
+            <p class="head__sub">Four projects, each with its code on GitHub.</p>
+          </div>
+          <div class="cards">
+            <div class="x-proj">
+              <h3>Fake News Detection System</h3>
+              <ul class="x-tags">
+                <li><span class="x-tag">Python</span></li><li><span class="x-tag">PyTorch</span></li><li><span class="x-tag">Hugging Face</span></li><li><span class="x-tag">PEFT (LoRA)</span></li><li><span class="x-tag">TinyBERT</span></li><li><span class="x-tag">Streamlit</span></li>
+              </ul>
+              <ul>
+                <li>TinyBERT-4L with LoRA, headline-to-body cross-attention and a Bi-GRU head, trained in two stages on a T4 GPU.</li>
+                <li>99.36% accuracy and 0.9938 F1 on 14,308 held-out WELFake articles (72k-article dataset).</li>
+                <li>Streamlit app returns a verdict and confidence in about 1–2 seconds on CPU.</li>
+              </ul>
+              <a class="x-proj__gh" href="https://github.com/Grandhiteja/Fake-News-Predictions-" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+            <div class="x-proj">
+              <div class="x-proj__top"><h3>Agentic Payment Recovery <small class="x-mono-small">(PayGuard-AI)</small></h3><span class="chip">Prototype</span></div>
+              <ul class="x-tags">
+                <li><span class="x-tag">Python</span></li><li><span class="x-tag">FastAPI</span></li><li><span class="x-tag">LLM function calling</span></li><li><span class="x-tag">Tenacity</span></li><li><span class="x-tag">Streamlit</span></li>
+              </ul>
+              <ul>
+                <li>A webhook receives failed payments; an LLM chooses retry, payment link or human escalation through function calling.</li>
+                <li>Exponential backoff with jitter, honours Retry-After, and auto-escalates when the model fails.</li>
+                <li>Streamlit dashboard of recovery metrics.</li>
+              </ul>
+              <a class="x-proj__gh" href="https://github.com/Grandhiteja/PayGuard-AI" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+            <div class="x-proj">
+              <h3>Quiz Leaderboard Service</h3>
+              <ul class="x-tags">
+                <li><span class="x-tag">Java 11</span></li><li><span class="x-tag">HttpClient</span></li><li><span class="x-tag">REST</span></li><li><span class="x-tag">JSON</span></li>
+              </ul>
+              <ul>
+                <li>Polls an external quiz API and de-duplicates score events with a HashMap keyed on round and participant.</li>
+                <li>Ranks with a custom Comparator and posts the leaderboard as JSON.</li>
+              </ul>
+              <a class="x-proj__gh" href="https://github.com/Grandhiteja/Quiz-leaderboard" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+            <div class="x-proj">
+              <div class="x-proj__top"><h3>StreamFlix <small class="x-mono-small">(Netflix Clone, Full-Stack)</small></h3></div>
+              <ul class="x-tags">
+                <li><span class="x-tag">React 19</span></li><li><span class="x-tag">Node.js</span></li><li><span class="x-tag">Express 5</span></li><li><span class="x-tag">Sequelize</span></li><li><span class="x-tag">PostgreSQL/SQLite</span></li><li><span class="x-tag">Firebase Auth</span></li><li><span class="x-tag">TMDB API</span></li><li><span class="x-tag">Vercel</span></li>
+              </ul>
+              <ul>
+                <li>Responsive Netflix-style web app: browse movies and TV by category, search, and play trailers.</li>
+                <li>Express backend proxies the TMDB API so the API key stays on the server; trailer lookup falls back from movie to TV endpoints.</li>
+                <li>Firebase email/password sign-in and a personal "My List" watchlist stored with Sequelize (SQLite locally, PostgreSQL in production).</li>
+              </ul>
+              <a class="x-proj__gh" href="https://github.com/Grandhiteja/netflxi-clone-" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="stats" data-nav="Stats">
+          <div class="head">
+            <p class="head__eyebrow">// by the numbers</p>
+            <h2>The work, in numbers.</h2>
+          </div>
+          <div class="x-stack">
+            <figure class="chart">
+              <figcaption class="chart__cap">Public commits by repository<small>144 public commits · 113 contributions in the last year (GitHub, Nov 2026) · counts from a sample of 100 commits</small></figcaption>
+              <div class="chart__canvas chart__canvas--tall"><canvas id="commits" role="img" aria-label="Leetcode leads with 73 of 100 sampled commits, then teja-portfolio 9 and Cyber-Security-prodigy 7"></canvas></div>
+            </figure>
+            <script type="application/json" id="commits-data">
+              [{"repo":"Leetcode","n":73},{"repo":"teja-portfolio","n":9},{"repo":"Cyber-Security-prodigy","n":7},{"repo":"Fake-News-Predictions-","n":4},{"repo":"computerlnetworkslab","n":2},{"repo":"DSA-03","n":2},{"repo":"DSA--02","n":2},{"repo":"Quiz-leaderboard","n":1}]
+            </script>
+
+            <div class="x-cm">
+              <p class="x-cm__cap">Fake News model: 91 errors in 14,308 test articles<small>WELFake held-out test set</small></p>
+              <section class="stats" aria-label="Model metrics">
+                <div class="stat"><span class="stat__fig" data-count="99.36" data-dec="2" data-suffix="%">99.36%</span><span class="stat__label">Accuracy</span></div>
+                <div class="stat"><span class="stat__fig" data-count="0.9938" data-dec="4">0.9938</span><span class="stat__label">F1</span></div>
+                <div class="stat"><span class="stat__fig" data-count="14308">14,308</span><span class="stat__label">Test articles</span></div>
+                <div class="stat"><span class="stat__fig" data-count="91">91</span><span class="stat__label">Errors</span></div>
+              </section>
+            </div>
+
+            <div class="x-pair2">
+              <div class="x-cm">
+                <p class="x-cm__cap">Confusion matrix<small>Rows: actual label · columns: predicted label</small></p>
+                <div class="x-cm__grid" role="table" aria-label="Confusion matrix">
+                  <div role="row" style="display:contents">
+                    <span role="columnheader"></span>
+                    <span class="x-cm__h x-cm__h--col" role="columnheader">Pred. Real</span>
+                    <span class="x-cm__h x-cm__h--col" role="columnheader">Pred. Fake</span>
+                  </div>
+                  <div role="row" style="display:contents">
+                    <span class="x-cm__h" role="rowheader">Actual Real</span>
+                    <span class="x-cm__cell x-cm__cell--ok" role="cell">6,962<small>correct</small></span>
+                    <span class="x-cm__cell x-cm__cell--err" role="cell">44<small>wrong</small></span>
+                  </div>
+                  <div role="row" style="display:contents">
+                    <span class="x-cm__h" role="rowheader">Actual Fake</span>
+                    <span class="x-cm__cell x-cm__cell--err" role="cell">47<small>wrong</small></span>
+                    <span class="x-cm__cell x-cm__cell--ok" role="cell">7,255<small>correct</small></span>
+                  </div>
+                </div>
+              </div>
+              <figure class="chart">
+                <figcaption class="chart__cap">Comfort level<small>Self-rated, out of 100</small></figcaption>
+                <div class="chart__canvas"><canvas id="skills" role="img" aria-label="Python 90, Machine Learning and PyTorch 85, SQL 75, Java 75, JavaScript and React 65, Docker 40"></canvas></div>
+              </figure>
+            </div>
+            <script type="application/json" id="skills-data">
+              [{"skill":"Python","v":90},{"skill":"ML / PyTorch","v":85},{"skill":"SQL","v":75},{"skill":"Java","v":75},{"skill":"JS / React","v":65},{"skill":"Docker","v":40}]
+            </script>
+          </div>
+        </section>
+
+        <section class="section" id="skills">
+          <div class="head">
+            <p class="head__eyebrow">// toolbox</p>
+            <h2>What I work with.</h2>
+          </div>
+          <div class="cards">
+            <div><h3>Languages</h3><ul class="x-tags"><li><span class="x-tag">Python</span></li><li><span class="x-tag">Java</span></li><li><span class="x-tag">JavaScript (ES6+)</span></li><li><span class="x-tag">SQL</span></li></ul></div>
+            <div><h3>AI/ML</h3><ul class="x-tags"><li><span class="x-tag">PyTorch</span></li><li><span class="x-tag">Hugging Face Transformers</span></li><li><span class="x-tag">PEFT (LoRA)</span></li><li><span class="x-tag">TinyBERT</span></li><li><span class="x-tag">NumPy</span></li><li><span class="x-tag">Pandas</span></li></ul></div>
+            <div><h3>Backend &amp; Web</h3><ul class="x-tags"><li><span class="x-tag">FastAPI</span></li><li><span class="x-tag">Node.js</span></li><li><span class="x-tag">Express.js</span></li><li><span class="x-tag">React.js</span></li><li><span class="x-tag">REST APIs</span></li><li><span class="x-tag">Sequelize</span></li></ul></div>
+            <div><h3>Databases</h3><ul class="x-tags"><li><span class="x-tag">PostgreSQL</span></li><li><span class="x-tag">SQLite</span></li><li><span class="x-tag">MongoDB</span></li><li><span class="x-tag">MySQL</span></li></ul></div>
+            <div><h3>Tools</h3><ul class="x-tags"><li><span class="x-tag">Git</span></li><li><span class="x-tag">GitHub</span></li><li><span class="x-tag">Docker (basics)</span></li><li><span class="x-tag">Postman</span></li><li><span class="x-tag">Firebase Auth</span></li><li><span class="x-tag">Vercel</span></li><li><span class="x-tag">Streamlit</span></li></ul></div>
+          </div>
+        </section>
+
+        <section class="section" id="experience" data-nav="Experience">
+          <div class="head">
+            <p class="head__eyebrow">// experience</p>
+            <h2>Two remote Python internships.</h2>
+          </div>
+          <ol class="timeline">
+            <li>
+              <p class="timeline__when">Jul – Sep 2025</p>
+              <div class="timeline__what">
+                <p><strong>Python Full-Stack Developer Intern</strong> · EduSkills Academy <small class="sub">(AICTE National Internship Portal)</small></p>
+                <ul>
+                  <li>Built modular Python backend services and REST APIs connected to a relational database.</li>
+                  <li>Applied OOP and tuned queries.</li>
+                  <li>Weekly sprint reviews, code reviews and unit tests.</li>
+                </ul>
+              </div>
+              <p><span class="pill">Remote</span></p>
+            </li>
+            <li>
+              <p class="timeline__when">Jan – Mar 2025</p>
+              <div class="timeline__what">
+                <p><strong>Python Programming Intern</strong> · CODTech IT Solutions Pvt. Ltd.</p>
+                <ul>
+                  <li>Built Python automation scripts and data-processing modules.</li>
+                  <li>Error handling and unit tests.</li>
+                  <li>PEP-8 and Git workflows.</li>
+                </ul>
+              </div>
+              <p><span class="pill">Remote</span></p>
+            </li>
+          </ol>
+        </section>
+
+        <section class="section x-certs" id="certs">
+          <div class="head">
+            <p class="head__eyebrow">// certifications</p>
+            <h2>Certifications.</h2>
+          </div>
+          <div class="cards">
+            <div><h3>Oracle Certified Professional</h3><p class="x-mono-small">Oracle</p></div>
+            <div><h3>Foundation of Cloud, IoT, Edge and ML</h3><p class="x-mono-small">NPTEL</p></div>
+            <div><h3>Agentic AI</h3><p class="x-mono-small">Hack2Skill</p></div>
+            <div><h3>Python Basic</h3><p class="x-mono-small">HackerRank</p></div>
+            <div><h3>Getting Started with Artificial Intelligence</h3><p class="x-mono-small">IBM</p></div>
+          </div>
+        </section>
+
+        <section class="section" id="contact" data-nav="Contact">
+          <div class="head">
+            <p class="head__eyebrow">// contacts</p>
+            <h2>Let's build something.</h2>
+            <p class="head__sub">Tiruchirappalli, Tamil Nadu, India</p>
+          </div>
+          <div class="x-pair2">
+            <div class="breakdown">
+              <dl>
+                <div class="row"><dt>Email</dt><dd><a class="link" href="mailto:grandhiteja93@gmail.com">grandhiteja93@gmail.com</a></dd></div>
+                <div class="row"><dt>LinkedIn</dt><dd><a class="link" href="https://linkedin.com/in/grandhiteja" target="_blank" rel="noopener">in/grandhiteja</a></dd></div>
+                <div class="row"><dt>GitHub</dt><dd><a class="link" href="https://github.com/Grandhiteja" target="_blank" rel="noopener">Grandhiteja</a></dd></div>
+                <div class="row"><dt>LeetCode</dt><dd><a class="link" href="https://leetcode.com/u/GrandhiTeja12" target="_blank" rel="noopener">GrandhiTeja12</a></dd></div>
+                <div class="row"><dt>HackerRank</dt><dd><a class="link" href="https://hackerrank.com/profile/grandhiteja93" target="_blank" rel="noopener">grandhiteja93</a></dd></div>
+              </dl>
+            </div>
+            <aside class="callout" aria-label="Get in touch">
+              <p class="callout__head">Open to roles</p>
+              <p class="callout__lead"><strong>Final-year AI/ML student who ships.</strong> Email is the fastest way to reach me.</p>
+              <div class="x-ctas"><a class="x-cta x-cta--sunset" href="mailto:grandhiteja93@gmail.com">Let's talk</a></div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="foot">
+        <p>© 2026 Grandhi Teja</p>
+        <nav aria-label="Back to sections" data-auto></nav>
+      </footer>
+    </div>
+    <script src="hark.js"></script>
+    <script src="chart.js"></script>
+    <script src="datalabels.js"></script>
+    <script src="hark-charts.js"></script>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var hasIO = "IntersectionObserver" in window;
+        function cssVar(n) { return getComputedStyle(root).getPropertyValue(n).trim(); }
+
+        /* Sunset gradient for bars, read from the page's tokens */
+        function sunset(ctx) {
+          var ch = ctx.chart, a = ch.chartArea;
+          if (!a) return "var(--chart-1)";
+          var g = ch.ctx.createLinearGradient(a.left, 0, a.right, 0);
+          g.addColorStop(0, cssVar("--x-orange"));
+          g.addColorStop(0.55, cssVar("--x-pink"));
+          g.addColorStop(1, cssVar("--x-lav"));
+          return g;
+        }
+
+        /* Charts are built when scrolled into view, so the bars grow from 0 */
+        var charts = {
+          commits: function (el) {
+            var commits = Hark.data("commits-data");
+            new Chart(el, {
+              type: "bar",
+              data: { labels: commits.map(function (d) { return d.repo; }), datasets: [{ label: "Commits", data: commits.map(function (d) { return d.n; }), backgroundColor: sunset }] },
+              options: {
+                indexAxis: "y",
+                animation: reduce ? false : { duration: 1400, easing: "easeOutQuart" },
+                plugins: { legend: { display: false }, datalabels: Hark.labels.values, tooltip: { callbacks: { label: function (ctx) { return ctx.raw + " commits"; } } } }
+              }
+            });
+          },
+          skills: function (el) {
+            var skills = Hark.data("skills-data");
+            new Chart(el, {
+              type: "bar",
+              data: { labels: skills.map(function (d) { return d.skill; }), datasets: [{ label: "Comfort level", data: skills.map(function (d) { return d.v; }), backgroundColor: sunset }] },
+              options: {
+                indexAxis: "y",
+                animation: reduce ? false : { duration: 1400, easing: "easeOutQuart" },
+                scales: { x: { min: 0, max: 100 } },
+                plugins: { legend: { display: false }, datalabels: Hark.labels.values, tooltip: { callbacks: { label: function (ctx) { return ctx.raw + " / 100"; } } } }
+              }
+            });
+          }
+        };
+        Object.keys(charts).forEach(function (id) {
+          var el = document.getElementById(id);
+          if (!hasIO) { charts[id](el); return; }
+          var io = new IntersectionObserver(function (es) {
+            if (es[0].isIntersecting) { io.disconnect(); charts[id](el); }
+          }, { threshold: 0.3 });
+          io.observe(el);
+        });
+
+        /* Counters */
+        function fmt(v, dec) { return v.toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec }); }
+        function count(el) {
+          var end = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), suf = el.dataset.suffix || "", t0 = null, dur = 1600;
+          function step(t) {
+            if (t0 === null) t0 = t;
+            var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+            el.textContent = fmt(end * e, dec) + suf;
+            if (p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+        var counters = document.querySelectorAll("[data-count]");
+        if (!reduce && hasIO) {
+          var cio = new IntersectionObserver(function (es) {
+            es.forEach(function (e) { if (e.isIntersecting) { cio.unobserve(e.target); count(e.target); } });
+          }, { threshold: 0.6 });
+          counters.forEach(function (el) {
+            el.textContent = fmt(0, +(el.dataset.dec || 0)) + (el.dataset.suffix || "");
+            cio.observe(el);
+          });
+        }
+
+        /* Scroll reveal, staggered among siblings */
+        var sel = ".section > .head, .main .cards > div, .main .chart, .x-cm, .timeline > li, .breakdown, .callout, .x-lead, .x-about .prose, .x-facts";
+        var items = document.querySelectorAll(sel);
+        if (!reduce && hasIO) {
+          items.forEach(function (el) {
+            var sibs = Array.prototype.filter.call(el.parentNode.children, function (c) { return c.matches(sel); });
+            el.style.setProperty("--d", Math.min(sibs.indexOf(el), 5) * 90 + "ms");
+            el.classList.add("x-reveal");
+          });
+          var rio = new IntersectionObserver(function (es) {
+            es.forEach(function (e) {
+              if (!e.isIntersecting) return;
+              var el = e.target;
+              rio.unobserve(el);
+              el.classList.add("is-in");
+              setTimeout(function () { el.style.setProperty("--d", "0ms"); }, 1400);
+            });
+          }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+          items.forEach(function (el) { rio.observe(el); });
+        } else {
+          items.forEach(function (el) { el.classList.add("is-in"); });
+        }
+
+        /* Nav state, progress bar and hero parallax */
+        var nav = document.querySelector(".x-nav");
+        var bar = document.querySelector(".x-progress");
+        var hero = document.querySelector(".x-hero");
+        var bg = document.querySelector(".x-hero__bg");
+        var ticking = false;
+        function onScroll() {
+          var y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+          nav.classList.toggle("is-scrolled", y > 40);
+          bar.style.setProperty("--p", max > 0 ? Math.min(y / max, 1) : 0);
+          if (!reduce && y < hero.offsetHeight) bg.style.setProperty("--sy", (y * 0.3).toFixed(1));
+          ticking = false;
+        }
+        window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+        onScroll();
+
+        if (!reduce && window.matchMedia("(hover: hover)").matches) {
+          hero.addEventListener("mousemove", function (e) {
+            var r = hero.getBoundingClientRect();
+            bg.style.setProperty("--mx", ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+            bg.style.setProperty("--my", ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+          });
+          hero.addEventListener("mouseleave", function () { bg.style.setProperty("--mx", 0); bg.style.setProperty("--my", 0); });
+
+          /* Project card tilt */
+          document.querySelectorAll(".x-proj").forEach(function (card) {
+            card.addEventListener("mousemove", function (e) {
+              var r = card.getBoundingClientRect();
+              var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+              card.style.setProperty("--ry", (px * 7).toFixed(2) + "deg");
+              card.style.setProperty("--rx", (py * -7).toFixed(2) + "deg");
+            });
+            card.addEventListener("mouseleave", function () { card.style.setProperty("--rx", "0deg"); card.style.setProperty("--ry", "0deg"); });
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
