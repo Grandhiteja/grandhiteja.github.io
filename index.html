@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Geist+Mono:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&family=Poppins:wght@400;500;600;700&display=swap"
     />
     <link rel="stylesheet" href="hark.css" />
     <link rel="stylesheet" href="hark-hero.css" />
@@ -18,7 +18,10 @@
       /* Sunset night theme: fixed dark, token values only. */
       :root:root {
         color-scheme: dark;
-        --x-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+        --x-poppins: "Poppins", "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+        --x-serif: var(--x-poppins);
+        --x-mono: "Geist Mono", ui-monospace, monospace;
+        --sans: var(--x-poppins);
         --x-night: #1b1640;
         --x-night-2: #2a1f5c;
         --x-deep: #120d33;
@@ -32,7 +35,7 @@
         --x-glass: rgba(52, 40, 112, 0.55);
         --x-glass-border: rgba(255, 255, 255, 0.13);
         --x-accent: var(--x-peach);
-        --text-primary: #f4f1ff;
+        --text-primary: #f3e6ff;
         --text-secondary: #c6bfe8;
         --text-tertiary: #ffffff59;
         --text-primary-on: #1b1640;
@@ -48,8 +51,8 @@
         --fill-system-orange: #ff9a3c;
         --stroke-system-orange: #ff9a3c33;
         --hark-shadow: 0 16px 40px #0b07246b;
-        --type-title: var(--weight-medium) var(--size-title)/1.15 var(--x-serif);
-        --type-display: var(--weight-medium) var(--size-display)/1.05 var(--x-serif);
+        --type-title: var(--weight-bold) var(--size-title)/1.2 var(--x-poppins);
+        --type-display: var(--weight-bold) var(--size-display)/1.1 var(--x-poppins);
         --chart-ink: #ff9a3c;
         --chart-ink-2: #c6bfe8;
         --chart-ink-3: #ffffff40;
@@ -93,14 +96,15 @@
 
       .x-accent { color: var(--x-accent); }
       .section { scroll-margin-top: 88px; }
-      .head__eyebrow { color: var(--x-lav); }
+      .head__eyebrow { color: var(--x-lav); font: var(--weight-regular) 13px/1.4 var(--x-mono); letter-spacing: 0.02em; }
       .head h2 {
-        font-family: var(--x-serif); font-weight: var(--weight-medium);
+        font: var(--weight-bold) clamp(30px, 4.2vw, 52px)/1.15 var(--x-poppins);
+        overflow-wrap: anywhere;
         background: var(--x-grad); -webkit-background-clip: text; background-clip: text;
         color: var(--x-peach); -webkit-text-fill-color: transparent;
         width: fit-content; max-width: 100%;
       }
-      .cards h3 { font-family: var(--x-serif); font-weight: var(--weight-medium); }
+      .cards h3 { font-family: var(--x-poppins); font-weight: var(--weight-bold); }
 
       /* scroll progress */
       .x-progress {
@@ -123,7 +127,7 @@
         border-bottom-color: var(--stroke-secondary);
         padding-block: 6px;
       }
-      .x-nav__brand { display: inline-flex; align-items: center; min-height: var(--tap); font: var(--weight-medium) 20px/1 var(--x-serif); color: #fff; text-decoration: none; white-space: nowrap; }
+      .x-nav__brand { display: inline-flex; align-items: center; min-height: var(--tap); font: var(--weight-bold) 20px/1 var(--x-poppins); color: #fff; text-decoration: none; white-space: nowrap; }
       .x-nav__links { display: flex; gap: 2px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
       .x-nav__links::-webkit-scrollbar { display: none; }
       .x-nav__links a, .x-nav__gh {
@@ -203,8 +207,8 @@
       .x-hero__kicker span[aria-hidden] { letter-spacing: -0.12em; font-size: 1.2em; color: var(--x-lav); }
       .x-hero__title {
         margin: 18px 0 22px;
-        font: var(--weight-medium) clamp(56px, 10.5vw, 172px)/0.95 var(--x-serif);
-        letter-spacing: -0.01em; color: #fff;
+        font: 700 clamp(52px, 10vw, 164px)/0.98 var(--x-poppins);
+        letter-spacing: -0.02em; color: #fff;
         text-shadow: 0 6px 40px rgba(10, 6, 30, 0.45);
       }
       .x-w { display: inline-block; white-space: nowrap; }
@@ -224,14 +228,14 @@
         background: rgba(27, 22, 64, 0.45); border: 1px solid rgba(255, 255, 255, 0.22);
         -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
       }
-      .x-chip b { font: var(--weight-medium) 24px/1 var(--x-serif); }
+      .x-chip b { font: var(--weight-bold) 24px/1 var(--x-poppins); }
       .x-chip span { font: var(--type-caption); text-transform: uppercase; letter-spacing: 0.06em; color: #e8e3ff; line-height: 1.3; }
       @media (max-width: 699px) {
         .x-hero__shade {
           background: linear-gradient(180deg, rgba(18, 12, 46, 0.62) 0%, rgba(18, 12, 46, 0.72) 55%, var(--x-night) 100%);
         }
         .x-hero__copy { padding-top: 140px; padding-bottom: 64px; }
-        .x-hero__title { font-size: clamp(48px, 15vw, 84px); }
+        .x-hero__title { font-size: clamp(40px, 14vw, 80px); }
       }
 
       /* buttons with shimmer */
@@ -289,10 +293,10 @@
       .x-about .cards { grid-template-columns: 1fr; }
       .x-about .cards > div { box-shadow: var(--hark-shadow); }
       .x-about .head { grid-template-columns: 1fr; }
-      .x-lead { font: italic var(--weight-regular) clamp(18px, 1.8vw, 22px)/1.5 var(--x-serif); color: var(--x-peach); }
-      .x-facts { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 20px; font-size: var(--size-small); }
-      .x-facts dt { font: var(--type-tag); color: var(--x-lav); padding-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
-      .x-facts dd { margin: 0; }
+      .x-lead { font: normal var(--weight-medium) clamp(18px, 1.8vw, 21px)/1.5 var(--x-poppins); color: var(--x-peach); }
+      .x-facts { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 20px; }
+      .x-facts dt { font: var(--weight-medium) 13px/1.4 var(--x-poppins); color: var(--x-lav); padding-top: 2px; text-transform: uppercase; letter-spacing: 0.08em; }
+      .x-facts dd { margin: 0; font: var(--weight-regular) 16px/1.5 var(--x-poppins); color: #fff; overflow-wrap: anywhere; }
       @media (max-width: 899px) { .x-about { grid-template-columns: 1fr; gap: 24px; } .x-about > .cards { order: 2; } }
 
       /* projects: tilt and glowing gradient border */
@@ -313,15 +317,18 @@
       }
       .x-proj:hover::before { opacity: 1; }
       .x-proj:hover { box-shadow: 0 22px 54px rgba(255, 111, 145, 0.2), 0 0 0 1px transparent; }
-      .cards .x-proj h3 { margin: 0; }
+      .cards .x-proj h3 { margin: 0; font: var(--weight-bold) 22px/1.3 var(--x-poppins); min-width: 0; overflow-wrap: anywhere; }
+      .cards .x-proj h3 small { font-size: 13px; font-weight: var(--weight-regular); }
       .x-proj__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
-      .cards .x-proj > ul:not(.x-tags) { color: var(--text-secondary); font-size: var(--size-small); line-height: 1.5; }
+      .cards .x-proj > ul:not(.x-tags) { color: #f3e6ff; font: var(--weight-regular) 17px/1.65 var(--x-poppins); }
+      .cards .x-proj > ul:not(.x-tags) li { overflow-wrap: anywhere; }
+      .x-proj .x-tag { font-size: 13px; }
       .x-proj__gh { margin-top: auto; font: var(--type-label); color: var(--x-peach); text-decoration: none; display: inline-flex; align-items: center; min-height: var(--tap); }
       .x-proj__gh:hover { text-decoration: underline; text-underline-offset: 4px; }
 
       /* confusion matrix */
       .x-cm { padding: 20px; border-radius: var(--r-m); }
-      .x-cm__cap { font: var(--weight-medium) 18px/1.3 var(--x-serif); margin-bottom: 14px; }
+      .x-cm__cap { font: var(--weight-bold) 18px/1.3 var(--x-poppins); margin-bottom: 14px; }
       .x-cm__cap small { display: block; margin-top: 4px; font: var(--type-caption); color: var(--text-secondary); }
       .x-cm .stat__fig { background: var(--x-grad); -webkit-background-clip: text; background-clip: text; color: var(--x-peach); -webkit-text-fill-color: transparent; width: fit-content; }
       .x-cm__grid { display: grid; grid-template-columns: auto repeat(2, minmax(0, 1fr)); gap: 8px; max-width: 560px; }
@@ -329,7 +336,7 @@
       .x-cm__h--col { text-align: center; }
       .x-cm__cell {
         display: grid; place-items: center; gap: 2px; min-height: 88px; padding: 12px; border-radius: var(--r-s);
-        font: var(--weight-medium) clamp(20px, 3vw, 28px)/1.1 var(--x-serif); text-align: center;
+        font: var(--weight-bold) clamp(20px, 3vw, 28px)/1.1 var(--x-poppins); text-align: center;
       }
       .x-cm__cell small { font: var(--type-tag); }
       .x-cm__cell--ok { background: linear-gradient(135deg, var(--x-orange), var(--x-peach)); color: #1b1640; -webkit-text-fill-color: #1b1640; box-shadow: 0 8px 24px rgba(255, 154, 60, 0.25); }
@@ -362,6 +369,17 @@
       .x-certs .cards > div { padding: 18px 20px; }
       .x-certs h3 { font: var(--type-label); margin-bottom: 4px; }
       .x-mono-small { font: var(--type-tag); color: var(--text-secondary); }
+
+      /* One Poppins system across the page */
+      body { font-family: var(--x-poppins); color: var(--text-primary); }
+      .prose p { font: var(--weight-regular) 18px/1.7 var(--x-poppins); color: #f3e6ff; }
+      .timeline__what, .timeline__what li, .cards li, .cards p { line-height: 1.6; }
+      .timeline__what strong { font-weight: var(--weight-bold); }
+      .breakdown dt, .callout__head, .chip, .pill, .x-cta, .x-nav__links a, .x-nav__cta { font-family: var(--x-poppins); font-weight: var(--weight-medium); }
+      .chart__cap { font-family: var(--x-poppins); font-weight: var(--weight-bold); }
+      .chart__cap small { font-weight: var(--weight-regular); }
+      .breakdown dd { min-width: 0; overflow-wrap: anywhere; }
+      body { overflow-x: clip; }
     </style>
   </head>
   <body>
@@ -408,7 +426,6 @@
             </div>
             <div class="x-chips">
               <div class="x-chip"><b data-count="8.93" data-dec="2">8.93</b><span>CGPA<br />out of 10</span></div>
-              <div class="x-chip"><b data-count="144">144</b><span>GitHub<br />commits</span></div>
             </div>
           </div>
         </section>
@@ -511,14 +528,6 @@
             <h2>The work, in numbers.</h2>
           </div>
           <div class="x-stack">
-            <figure class="chart">
-              <figcaption class="chart__cap">Public commits by repository<small>144 public commits · 113 contributions in the last year (GitHub, Nov 2026) · counts from a sample of 100 commits</small></figcaption>
-              <div class="chart__canvas chart__canvas--tall"><canvas id="commits" role="img" aria-label="Leetcode leads with 73 of 100 sampled commits, then teja-portfolio 9 and Cyber-Security-prodigy 7"></canvas></div>
-            </figure>
-            <script type="application/json" id="commits-data">
-              [{"repo":"Leetcode","n":73},{"repo":"teja-portfolio","n":9},{"repo":"Cyber-Security-prodigy","n":7},{"repo":"Fake-News-Predictions-","n":4},{"repo":"computerlnetworkslab","n":2},{"repo":"DSA-03","n":2},{"repo":"DSA--02","n":2},{"repo":"Quiz-leaderboard","n":1}]
-            </script>
-
             <div class="x-cm">
               <p class="x-cm__cap">Fake News model: 91 errors in 14,308 test articles<small>WELFake held-out test set</small></p>
               <section class="stats" aria-label="Model metrics">
@@ -552,11 +561,11 @@
               </div>
               <figure class="chart">
                 <figcaption class="chart__cap">Comfort level<small>Self-rated, out of 100</small></figcaption>
-                <div class="chart__canvas"><canvas id="skills" role="img" aria-label="Python 90, Machine Learning and PyTorch 85, SQL 75, Java 75, JavaScript and React 65, Docker 40"></canvas></div>
+                <div class="chart__canvas"><canvas id="skills" role="img" aria-label="Python 90, Machine Learning and PyTorch 85, SQL 75, Java 75"></canvas></div>
               </figure>
             </div>
             <script type="application/json" id="skills-data">
-              [{"skill":"Python","v":90},{"skill":"ML / PyTorch","v":85},{"skill":"SQL","v":75},{"skill":"Java","v":75},{"skill":"JS / React","v":65},{"skill":"Docker","v":40}]
+              [{"skill":"Python","v":90},{"skill":"ML / PyTorch","v":85},{"skill":"SQL","v":75},{"skill":"Java","v":75}]
             </script>
           </div>
         </section>
@@ -676,18 +685,6 @@
 
         /* Charts are built when scrolled into view, so the bars grow from 0 */
         var charts = {
-          commits: function (el) {
-            var commits = Hark.data("commits-data");
-            new Chart(el, {
-              type: "bar",
-              data: { labels: commits.map(function (d) { return d.repo; }), datasets: [{ label: "Commits", data: commits.map(function (d) { return d.n; }), backgroundColor: sunset }] },
-              options: {
-                indexAxis: "y",
-                animation: reduce ? false : { duration: 1400, easing: "easeOutQuart" },
-                plugins: { legend: { display: false }, datalabels: Hark.labels.values, tooltip: { callbacks: { label: function (ctx) { return ctx.raw + " commits"; } } } }
-              }
-            });
-          },
           skills: function (el) {
             var skills = Hark.data("skills-data");
             new Chart(el, {
